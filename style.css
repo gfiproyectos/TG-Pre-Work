@@ -12,6 +12,10 @@ main {
   margin-top: 44px;
   grid-auto-rows: 500px;
   justify-items: center;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  grid-auto-flow: column;
 }
 
 h2 {
@@ -35,11 +39,11 @@ img {
 }
 
 .a {
-  
+
 }
 
 .c {
-  
+
 }
 
 .time {
