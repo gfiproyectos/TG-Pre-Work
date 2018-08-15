@@ -1,10 +1,21 @@
-// Declares constant variable kelvin
-const kelvin = 280;
-// Declares constant variable celsius and subtracts 273 from kelvin
-const celsius = kelvin - 273;
-// Declares variable fahrenheit and calculates based in celsius
-let fahrenheit = celsius * (9 / 5) + 32;
-// Use of the Math.floor method to round down the fahrenheit value
-fahrenheit = Math.floor(fahrenheit);
+// Initialize constant myAge
+const myAge = 42;
+// Initialize variable earlyYears
+let earlyYears = 2;
 
-console.log(`The temperature is ${fahrenheit} degrees Fahrenheit`)
+earlyYears *= 10.5;
+
+let laterYears = myAge - 2;
+
+laterYears *= 4;
+
+console.log(earlyYears);
+console.log(laterYears);
+
+// Declares myAgeInDogYears and adds both earlyYears and laterYears
+let myAgeInDogYears = earlyYears + laterYears;
+
+'Alexis Zambrano'.toLowerCase();
+
+console.log(`My name is ${'Alexis Zambrano'.toLowerCase()}. I am ${myAgeInDogYears} years old in dog years`)
+
