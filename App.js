@@ -1,17 +1,54 @@
-let isLocked = false;
+let userName = '';
 
-isLocked ? console.log('You will need a key to open the door.')
-:  console.log('You will not need a key to open the door.');
+userName ?
+  console.log(`Hello ${userName}`) :
+  console.log("Hello");
 
+const userQuestion = 'Who is Alexa';
 
-let isCorrect = true;
+console.log(`The user asked: ${userQuestion}`);
 
-isCorrect ? console.log('Correct!') :
-  console.log('Incorrect!');
+const randomNumber = Math.floor(Math.random() * 8);
 
+console.log(`The randomNumber: ${randomNumber}`);
 
-let favoritePhrase = 'Love That!';
+let eightBall = '';
 
-favoritePhrase === 'Love That!' ?
-  console.log('I love that!') :
-  console.log("I don't love that!");
+switch (randomNumber) {
+        
+        case 0:
+          eightBall = 'It is certain';
+          break;
+    
+        case 1:
+          eightBall = 'It is decidedly so';
+          break;
+    
+        case 2:
+          eightBall = 'Reply hazy try again';
+          break;
+    
+        case 3:
+          eightBall = 'Cannot predict now';
+          break;
+    
+        case 4:
+          eightBall = 'Do not count on it';
+          break;
+    
+        case 5:
+          eightBall = 'My sources say no';
+          break;
+    
+        case 6:
+          eightBall = 'Outlook not so good';
+          break;
+    
+        case 7:
+          eightBall = 'Signs point to yes';
+          break;
+    
+        }
+
+console.log(`The Magic Eight Ball answered: ${eightBall}`);
+
