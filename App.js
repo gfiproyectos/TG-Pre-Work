@@ -1,21 +1,18 @@
-let raceNumber = Math.floor(Math.random() * 1000);
+let secretMessage = ['Learning', 'is', 'not', 'about', 'what', 'you', 'get', 'easily', 'the', 'first', 'time,', 'it', 'is', 'about', 'what', 'you', 'can', 'figure', 'out.', '-2015,', 'Chris', 'Pine,', 'Learn', 'JavaScript'];
 
-const registeredEarly = true;
-const age = 18;
+secretMessage.pop();
 
-if (age > 18 && registeredEarly) { 
-   raceNumber += 1000;
-}
+console.log(secretMessage.length);
 
-if (age > 18 && registeredEarly) { 
-   console.log(`Runner will race at 9:30 am and 
-Number will be ${raceNumber} `);
-} else if (age > 18 && !registeredEarly) {
-  console.log(`Runner will race at 11:30 am and 
-Number will be ${raceNumber} `);
-} else if (age < 18 ) {
-  console.log(`Runner will race at 12:30 am and 
-Number will be ${raceNumber} `);
-} else {
-  console.log('Runner should see the registration desk');
-}
+secretMessage.push('to','Program');
+
+secretMessage[7] = 'right';
+
+secretMessage.shift(0);
+
+secretMessage.unshift('Programming');
+
+secretMessage.splice(6,5,'know');
+
+console.log(secretMessage.join(' '));
+  
