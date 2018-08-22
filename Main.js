@@ -1,3 +1,18 @@
-let newYearsResolutions = ['Learn AWS' , 'Get a 50$/hr job' , 'Be Happy...'];
+let myPlaces = ['Bahamas', 'Cancun', 'Greece'];
 
-console.log(newYearsResolutions);
+let friendPlaces  = ['Italy', 'Antigua', 'Greece'];
+
+for (let myPlacesIndex  = 0; myPlacesIndex  < myPlaces.length; myPlacesIndex ++) {
+
+   for (let friendPlacesIndex  = 0; friendPlacesIndex  < friendPlaces.length; friendPlacesIndex++) {
+   
+     if (myPlaces[myPlacesIndex] === friendPlaces[friendPlacesIndex]) {
+         
+           console.log(friendPlaces[friendPlacesIndex]);  
+       
+         } 
+      
+  }
+  
+  
+ }
