@@ -1,18 +1,25 @@
-let myPlaces = ['Bahamas', 'Cancun', 'Greece'];
+const input = 'any given declaration for testing reasons';
 
-let friendPlaces  = ['Italy', 'Antigua', 'Greece'];
+const vowels = ['a', 'e', 'i', 'o', 'u'];
 
-for (let myPlacesIndex  = 0; myPlacesIndex  < myPlaces.length; myPlacesIndex ++) {
+let resultArray = [];
 
-   for (let friendPlacesIndex  = 0; friendPlacesIndex  < friendPlaces.length; friendPlacesIndex++) {
-   
-     if (myPlaces[myPlacesIndex] === friendPlaces[friendPlacesIndex]) {
-         
-           console.log(friendPlaces[friendPlacesIndex]);  
-       
-         } 
-      
-  }
+for (let inputIndex = 0; inputIndex < input.length; inputIndex++) {
   
+  for (let vowelIndex = 0; vowelIndex < vowels.length; vowelIndex++) {
+    
+    if (input[inputIndex] === vowels[vowelIndex]) {
+        
+        resultArray.push(input[inputIndex]);
+        if (input[inputIndex] === 'e' || input[inputIndex] === 'u' ) {
+                resultArray.push(input[inputIndex]);
+          
+            }
+        
+        }
+    
+  };
   
- }
+} ;
+
+console.log(resultArray.join('').toUpperCase());
