@@ -1,25 +1,15 @@
-const input = 'any given declaration for testing reasons';
+let cities = ['Nashville', 'Charlotte', 'Asheville', 'Austin', 'Boulder'];
 
-const vowels = ['a', 'e', 'i', 'o', 'u'];
+let nums = [1, 50, 75, 200, 350, 525, 1000];
 
-let resultArray = [];
+//  Choose a method that will return undefined
+cities.forEach(city => console.log('Have you visited ' + city + '?'));
 
-for (let inputIndex = 0; inputIndex < input.length; inputIndex++) {
-  
-  for (let vowelIndex = 0; vowelIndex < vowels.length; vowelIndex++) {
-    
-    if (input[inputIndex] === vowels[vowelIndex]) {
-        
-        resultArray.push(input[inputIndex]);
-        if (input[inputIndex] === 'e' || input[inputIndex] === 'u' ) {
-                resultArray.push(input[inputIndex]);
-          
-            }
-        
-        }
-    
-  };
-  
-} ;
+// Choose a method that will return a new array
+let longCities = cities.filter(city => city.length > 7);
 
-console.log(resultArray.join('').toUpperCase());
+// Choose a method that will return a new array
+let smallerNums = nums.map(num => num - 5);
+
+// Choose a method that will return a boolean value
+nums.every(num => num < 0);
