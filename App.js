@@ -1,97 +1,76 @@
-class Media {
+class School {
   
-    constructor(title) {
-      this._title = title;
-      this._isCheckedOut = false;
-      this._ratings = []
+    constructor(name, level, numberOfStudents) {
+      this._name = name;
+      this._level = level;
+      this._numberOfStudents = numberOfStudents;
     }
     
-    get title() {
-      return this._title;
+    get name() {
+      return this._name;
     }
     
-    get isCheckedOut() {
-      return this._isCheckedOut;
+    get level() {
+      return this._level;
     }
   
-    set isCheckedOut(isCheckedVal) {
-      this._isCheckedOut = isCheckedVal;
+    set numberOfStudents(newNumberOfStudents) {
+      if (typeof newNumberOfStudents === 'Number') {
+        this._numberOfStudents = newNumberOfStudents
+      } else {
+       console.log('Invalid input: numberOfStudents must be set to a Number.');
+      }
     }
   
-    get ratings() {
-      return this._ratings;
+    get numberOfStudents() {
+      return this._numberOfStudents;
     }
     
-    toggleCheckOutStatus () {
-      this._isCheckedOut = !this._isCheckedOut;
+    quickFacts () {
+      console.log(` ${this._name} educates ${this._numberOfStudents} students at the ${this._level} level.`)
+    }
+
+    static pickSubstituteTeacher (substituteTeachers) {
+      const randomTeacher = Math.floor(Math.random() * substituteTeachers.length);
+      console.log(substituteTeachers[randomTeacher]);
     }
  
-    getAverageRating () {
-      let ratingsSum = this.ratings.reduce((currentSum, rating) => currentSum + rating, 0);
-      const lengthOfArray = this.ratings.length;
-      return ratingsSum / lengthOfArray;
-    }
-  
-    addRating (newRating) {
-      this._ratings.push(newRating);
-    }
-  
 }
 
-class Book extends Media {
+class PrimarySchool extends School {
   
-  constructor(title, author, pages) {
-    super(title);
-    this._author = author;
-    this._pages = pages;
+  constructor(name, numberOfStudents , pickupPolicy) {
+    super(name, 'primary', numberOfStudents);
+    this._pickupPolicy = pickupPolicy;
   } 
  
-  get author() {
-    return this._author;
-  }
-  
-  get pages() {
-    return this._pages;
+  get pickupPolicy() {
+    return this._pickupPolicy;
   }
     
 }
 
-class Movie extends Media {
+class HighSchool  extends School {
   
-  constructor(title, director, runTime) {
-    super(title);
-    this._director = director;
-    this._runTime = runTime;
+  constructor(name, numberOfStudents , sportsTeams ) {
+    super(name, 'high', numberOfStudents);
+    this._sportsTeams = sportsTeams;
   } 
  
-  get director() {
-    return this._director;
-  }
-  
-  get runTime() {
-    return this._runTime;
+  get sportsTeams() {
+    return this._sportsTeams;
   }
     
 }
 
-const historyOfEverything = new Book ('A Short History of Nearly Everything', 'Bill Bryson',544);
+const lorraineHansbury = new PrimarySchool  ('Lorraine Hansbury', 514,'Students must be picked up by a parent, guardian, or a family member over the age of 13.');
 
-console.log(historyOfEverything);
+console.log(lorraineHansbury);
 
-historyOfEverything.toggleCheckOutStatus();
+lorraineHansbury.quickFacts();
 
-historyOfEverything.addRating(4);
-historyOfEverything.addRating(5);
-historyOfEverything.addRating(5);
+School.pickSubstituteTeacher(['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli']);
 
-console.log(historyOfEverything.getAverageRating());
+const alSmith = new HighSchool  ('Al E. Smith', 415,['Baseball', 'Basketball', 'Volleyball', 'Track and Field']);
 
-const speed = new Movie  ('Speed', 'Jan de Bont',116);
-speed.toggleCheckOutStatus();
-
-speed.addRating(1);
-speed.addRating(1);
-speed.addRating(5);
-
-console.log(speed);
-console.log(speed.getAverageRating());
+console.log(alSmith.sportsTeams);
