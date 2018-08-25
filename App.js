@@ -1,58 +1,97 @@
-const team = {
-    _players: [
-      {firstName: 'Eddie', 
-           lastName: 'Acosta', 
-           age: 44},
-      {firstName: 'Jorge', 
-           lastName: 'Rojas', 
-           age: 38},
-      {firstName: 'Luis', 
-           lastName: 'Vides', 
-           age: 36}
-    ],
-    _games: [{opponent: 'Broncos', teamPoints: 42, opponentPoints: 27},
-            {opponent: 'Bravos', teamPoints: 12, opponentPoints: 5},
-            {opponent: 'Bears', teamPoints: 3, opponentPoints: 8}],
+class Media {
+  
+    constructor(title) {
+      this._title = title;
+      this._isCheckedOut = false;
+      this._ratings = []
+    }
     
-    get players () {
+    get title() {
+      return this._title;
+    }
     
-    },
-    get games () {
+    get isCheckedOut() {
+      return this._isCheckedOut;
+    }
+  
+    set isCheckedOut(isCheckedVal) {
+      this._isCheckedOut = isCheckedVal;
+    }
+  
+    get ratings() {
+      return this._ratings;
+    }
     
-    },
+    toggleCheckOutStatus () {
+      this._isCheckedOut = !this._isCheckedOut;
+    }
+ 
+    getAverageRating () {
+      let ratingsSum = this.ratings.reduce((currentSum, rating) => currentSum + rating, 0);
+      const lengthOfArray = this.ratings.length;
+      return ratingsSum / lengthOfArray;
+    }
   
-    addPlayer  (playerFirstName, playerLastName, playerAge)  {
-                
-          let player = {
-            firstName: playerFirstName,
-            lastName: playerLastName,
-            age: playerAge
-          }
-          
-          this._players.push(player);
-          
-        },  
+    addRating (newRating) {
+      this._ratings.push(newRating);
+    }
   
-    addGame  (gameOpponent, gameTeamPoints, gameOpponentPoints)  {
-                
-          let game = {
-            opponent: gameOpponent,
-            teamPoints: gameTeamPoints,
-            opponentPoints: gameOpponentPoints
-          }
-          
-          this._games.push(game);
-          
-        }  
+}
+
+class Book extends Media {
+  
+  constructor(title, author, pages) {
+    super(title);
+    this._author = author;
+    this._pages = pages;
+  } 
+ 
+  get author() {
+    return this._author;
+  }
+  
+  get pages() {
+    return this._pages;
+  }
     
-  };
+}
+
+class Movie extends Media {
   
+  constructor(title, director, runTime) {
+    super(title);
+    this._director = director;
+    this._runTime = runTime;
+  } 
+ 
+  get director() {
+    return this._director;
+  }
   
-  
-  team.addPlayer("Steph", "Curry", 28);
-  team.addGame("Rays", 5, 6);
-  team.addGame("Nets", 88, 55);
-  team.addGame("Rams", 44, 21);
-  
-  console.log(team._players);
-  console.log(team._games);  
+  get runTime() {
+    return this._runTime;
+  }
+    
+}
+
+const historyOfEverything = new Book ('A Short History of Nearly Everything', 'Bill Bryson',544);
+
+console.log(historyOfEverything);
+
+historyOfEverything.toggleCheckOutStatus();
+
+historyOfEverything.addRating(4);
+historyOfEverything.addRating(5);
+historyOfEverything.addRating(5);
+
+console.log(historyOfEverything.getAverageRating());
+
+const speed = new Movie  ('Speed', 'Jan de Bont',116);
+speed.toggleCheckOutStatus();
+
+speed.addRating(1);
+speed.addRating(1);
+speed.addRating(5);
+
+console.log(speed);
+console.log(speed.getAverageRating());
