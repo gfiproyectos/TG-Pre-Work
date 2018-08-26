@@ -1,15 +1,39 @@
-const xhr = new XMLHttpRequest();
+// Information to reach API
+const url = 'https://api.datamuse.com/words?';
+const queryParams = 'rel_rhy=';
 
-const url =  'https://api-to-call.com/endpoint';
+// Selecting page elements
+const inputField = document.querySelector('#input');
+const submit = document.querySelector('#submit');
+const responseField = document.querySelector('#responseField');
 
-xhr.responseType = 'json';
+// AJAX function
+const getSuggestions = () => {
+   const wordQuery = inputField.value;
+   const endpoint = url + queryParams + wordQuery;
+  
+   const xhr = new XMLHttpRequest();
+   xhr.responseType = 'json';
+   xhr.onreadystatechange = () => {
+     if (xhr.readyState === XMLHttpRequest.DONE) {
+          renderResponse(xhr.response)
+     }
+   };
+  
+   xhr.open('GET', endpoint);
 
-xhr.onreadystatechange = () => {
-  if (xhr.readyState === XMLHttpRequest.DONE) {
-    return xhr.response;
-  }
-};
+   xhr.send();
+  
+}
 
-xhr.open('GET', url);
+// Clear previous results and display results to webpage
+const displaySuggestions = (event) => {
+  event.preventDefault();
+  while(responseField.firstChild){
+    responseField.removeChild(responseField.firstChild);
+  };
+  getSuggestions();
+}
 
-xhr.send();
+submit.addEventListener('click', displaySuggestions);
+
