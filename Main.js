@@ -1,47 +1,15 @@
-class HospitalEmployee {
-    constructor(name) {
-      this._name = name;
-      this._remainingVacationDays = 20;
-    }
-    
-    get name() {
-      return this._name;
-    }
-    
-    get remainingVacationDays() {
-      return this._remainingVacationDays;
-    }
-    
-    takeVacationDays(daysOff) {
-      this._remainingVacationDays -= daysOff;
-    }
-    
-    static generatePassword() {
-      const randomNumber = Math.floor(Math.random()*10000);
-      return randomNumber;
-    }
-    
+const xhr = new XMLHttpRequest();
+
+const url =  'https://api-to-call.com/endpoint';
+
+xhr.responseType = 'json';
+
+xhr.onreadystatechange = () => {
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+    return xhr.response;
   }
-  
-  class Nurse extends HospitalEmployee {
-    constructor(name, certifications) {
-      super(name);
-      this._certifications = certifications;
-    } 
-    
-    get certifications() {
-      return this._certifications;
-    }
-    
-    addCertification(newCertification) {
-      this.certifications.push(newCertification);
-    }
-  }
-  
-  const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
-  nurseOlynyk.takeVacationDays(5);
-  console.log(nurseOlynyk.remainingVacationDays);
-  nurseOlynyk.addCertification('Genetics');
-  console.log(nurseOlynyk.certifications);
-  
-  console.log(HospitalEmployee.generatePassword());
+};
+
+xhr.open('GET', url);
+
+xhr.send();
